@@ -27,8 +27,3 @@ function crawl(url, method, opts, fn) {
         buffer.concat(data);
     });
 }
-
-var request = require('request-gb').get;
-request.get('http://www.xxx.com', {gzip:true}, function(err, res){
-   console.log(res);
-});
