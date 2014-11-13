@@ -1,0 +1,33 @@
+{
+  "name": "request-gb",
+  "version": "0.0.1",
+  "description" : "simplified HTTP client with automatic Chinese encoding conversion",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rockdragon/request-gb.git"
+  },
+  "keywords" : [
+    "request",
+    "中文",
+    "编码",
+    "乱码",
+    "转换"
+  ],
+  "author": "Mo Ye <moyerock@gmail.com> (http://www.moye.me/)",
+  "license" : "MIT",
+  "dependencies": {
+    "bufferhelper" : "~0.2.0",
+    "request": "~2.48.0",
+    "iconv-lite" : "~0.4.4"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "bufferhelper" : "~0.2.0",
+    "request": "~2.48.0",
+    "iconv-lite" : "~0.4.4"
+  }
+}
