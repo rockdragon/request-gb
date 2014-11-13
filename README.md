@@ -2,7 +2,7 @@ request-gb
 ======
 [![https://www.npmjs.org/package/request-gb](https://nodei.co/npm/request-gb.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.org/package/request-gb)
 
-This module extends [request/request](https://github.com/request/request)'s Request class with a with automatic Chinese encoding conversion.
+This module extends [request/request](https://github.com/request/request)'s Request class with a automatic Chinese encoding conversion.
 
 It is backed by the [request](https://github.com/request/request) module, so see its README for more details.
 
