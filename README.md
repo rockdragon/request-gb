@@ -7,8 +7,8 @@ It is backed by the [request](https://github.com/request/request) module, so see
 
 Installation
 ======
-```
-	npm install request-gb
+```shell
+	$npm install request-gb
 ```
 
 Example
