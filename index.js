@@ -1,9 +1,11 @@
 var request = require('request');
 var iconv = require('iconv-lite');
 var BufferHelper = require('bufferhelper');
+var fs = require('fs');
 
 module.exports.get = get;
 module.exports.post = post;
+module.exports.download = download;
 
 function get(url, opts, fn) {
     crawl(url, 'GET', opts, fn);
@@ -26,4 +28,15 @@ function crawl(url, method, opts, fn) {
     }).on('data', function (data) {
         buffer.concat(data);
     });
+}
+
+function download(url, referer, opts, path, fn) {
+    opts.url = url;
+    opts.method = 'GET';
+    if(referer)
+        opts.headers = {'referer': referer};
+    opts.gzip = opts.gzip || true;
+    var r = request(opts,function(err, res){
+        fn(err, res);
+    }).pipe(fs.createWriteStream(path));
 }
