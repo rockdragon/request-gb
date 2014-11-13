@@ -9,19 +9,15 @@ function get(url, opts, fn) {
     crawl(url, 'GET', opts, fn);
 }
 
-function post(url, data, opts, fn) {
-    crawl(url, 'POST', data, opts, fn);
+function post(url, opts, fn) {
+    crawl(url, 'POST', opts, fn);
 }
 
 function crawl(url, method, opts, fn) {
     var buffer = new BufferHelper();
-    var options = {
-        method: method,
-        gzip: opts.gzip || true,
-        url: url
-    };
-    if (opts.proxy)
-        options.proxy = opts.proxy;
+    opts.url = url;
+    opts.method = method;
+    opts.gzip = opts.gzip || true;
     request(opts, function (err, res) {
         var encoding = res.headers['content-type'].split('charset=')[1] || 'UTF-8';
         console.log(url, ' encoding:', encoding);
