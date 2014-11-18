@@ -1,6 +1,6 @@
 request-gb
 ======
-![https://travis-ci.org/rockdragon/request-gb](https://travis-ci.org/rockdragon/request-gb.svg) [![Coverage Status](https://img.shields.io/coveralls/rockdragon/request-gb.svg)](https://coveralls.io/r/rockdragon/request-gb)
+[![Build Status](https://travis-ci.org/rockdragon/request-gb.svg)](https://travis-ci.org/rockdragon/request-gb) [![Coverage Status](https://img.shields.io/coveralls/rockdragon/request-gb.svg)](https://coveralls.io/r/rockdragon/request-gb) [![npm version](https://badge.fury.io/js/request-gb.svg)](http://badge.fury.io/js/request-gb) [![Dependency Status](https://david-dm.org/rockdragon/request-gb.svg)](https://david-dm.org/rockdragon/request-gb) 
 
 [![https://www.npmjs.org/package/request-gb](https://nodei.co/npm/request-gb.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.org/package/request-gb)
 
