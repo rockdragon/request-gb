@@ -18,7 +18,7 @@ Example
 ======
 
 ```javascript
-var request = require('request-gb').get;
+var request = require('request-gb');
 request.get('http://www.xxx.com', {gzip:true}, function(err, res){
    console.log(res);
 });
