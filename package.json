@@ -1,13 +1,17 @@
 {
   "name": "request-gb",
   "version": "0.0.4",
-  "description" : "simplified HTTP client with automatic Chinese encoding conversion",
+  "description": "simplified HTTP client with automatic Chinese encoding conversion",
   "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive --timeout 15000 -R spec --require should test/ --bail",
+    "test-travis": "node node_modules/istanbul-harmony/lib/cli.js cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -u exports --require should  --timeout 15000  --recursive test/ --bail"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/rockdragon/request-gb.git"
   },
-  "keywords" : [
+  "keywords": [
     "request",
     "中文",
     "编码",
@@ -15,10 +19,21 @@
     "转换"
   ],
   "author": "Mo Ye <moyerock@gmail.com> (http://www.moye.me/)",
-  "license" : "MIT",
+  "license": "MIT",
   "dependencies": {
-    "bufferhelper" : "~0.2.0",
+    "bufferhelper": "~0.2.0",
     "request": "~2.48.0",
-    "iconv-lite" : "~0.4.4"
+    "iconv-lite": "~0.4.4"
+  },
+  "devDependencies": {
+    "istanbul-harmony": "*",
+    "coveralls": "*",
+    "should": "*",
+    "mocha": "*",
+    "expect.js": "*",
+    "mocha-lcov-reporter": "*"
+  },
+  "engines": {
+    "node": ">= 0.10.33"
   }
 }
