@@ -23,3 +23,7 @@ request.get('http://www.xxx.com', {gzip:true}, function(err, res){
    console.log(res);
 });
 ```
+
+License
+======
+MIT
