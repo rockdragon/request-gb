@@ -21,7 +21,9 @@ function crawl(url, method, opts, fn) {
     opts.method = method;
     opts.gzip = opts.gzip || true;
     request(opts, function (err, res) {
-        var encoding = res.headers['content-type'].split('charset=')[1] || 'UTF-8';
+        var encoding =  'UTF-8';
+        if(res.headers)
+            encoding = res.headers['content-type'].split('charset=')[1];
         console.log(url, ' encoding:', encoding);
         var html = iconv.decode(buffer.toBuffer(), encoding);
         fn(err, html);
