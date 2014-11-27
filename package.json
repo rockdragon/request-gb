@@ -1,6 +1,6 @@
 {
   "name": "request-gb",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description" : "simplified HTTP client with automatic Chinese encoding conversion",
   "main": "index.js",
   "scripts": {
