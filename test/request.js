@@ -6,8 +6,8 @@ require('should');
 
 describe('request scenario', function () {
     it('test get method', function (done) {
-        request.get('http://www.moye.me/', {gzip:true}, function(err, res){
-            res.should.not.null;
+        request.get('http://www.moye.me/', {gzip:true}, function(err, res, html){
+            html.should.not.equal(null);
             done();
         });
     });
