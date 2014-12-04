@@ -18,10 +18,30 @@ Example
 ======
 
 ```javascript
+// get a page
 var request = require('request-gb');
 request.get('http://www.xxx.com', {gzip:true}, function(err, res){
    console.log(res);
 });
+
+// download a file
+request.download(
+    'http://gravatar.com/avatar/84cbf739853b2e023328e2c0428d663c',
+    'http://en.gravatar.com/',
+    {gzip:true},
+    '/users/xxx/avatar.jpg',
+    function(err, res){
+        console.log(res.length);
+    });
+
+// read file data into a Buffer
+request.download2Buffer(
+    'http://gravatar.com/avatar/84cbf739853b2e023328e2c0428d663c',
+    'http://en.gravatar.com/',
+    {gzip:true},
+    function(err, buf){
+        console.log(buf.length);
+    });
 ```
 
 License
