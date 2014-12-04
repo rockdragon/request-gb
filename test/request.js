@@ -1,8 +1,7 @@
 var request = require('../index');
 var expect = require('expect.js');
 var fs = require('fs');
-require('should');
-
+var should = require('should');
 
 describe('request scenario', function () {
     it('test get method', function (done) {
@@ -21,6 +20,18 @@ describe('request scenario', function () {
             filePath,
             function(err, res){
                 fs.existsSync(filePath).should.equal(true);
+                done();
+            });
+    });
+
+    it('test download to Buffer method', function (done) {
+        var filePath = 'avatar.jpg';
+        request.download2Buffer(
+            'http://gravatar.com/avatar/84cbf739853b2e023328e2c0428d663c',
+            'http://en.gravatar.com/',
+            {gzip:true},
+            function(err, buf){
+                should.exists(buf);
                 done();
             });
     });
