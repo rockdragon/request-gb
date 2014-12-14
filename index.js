@@ -17,20 +17,25 @@ function post(url, opts, fn) {
 }
 
 function crawl(url, method, opts, fn) {
-    var buffer = new BufferHelper();
-    opts.url = url;
-    opts.method = method;
-    opts.gzip = opts.gzip || true;
-    request(opts, function (err, response, res) {
-        var encoding = 'UTF-8';
-        if (response && response.headers && response.headers['content-type'])
-            encoding = response.headers['content-type'].split('charset=')[1];
-        console.log(url, ' encoding:', encoding);
-        var html = iconv.decode(buffer.toBuffer(), encoding);
-        fn(err, response, html);
-    }).on('data', function (data) {
-        buffer.concat(data);
-    });
+    try {
+        var buffer = new BufferHelper();
+        opts.url = url;
+        opts.method = method;
+        opts.gzip = opts.gzip || true;
+        request(opts, function (err, response, res) {
+            var encoding = 'UTF-8';
+            if (response && response.headers && response.headers['content-type'])
+                encoding = response.headers['content-type'].split('charset=')[1];
+            console.log(url, ' encoding:', encoding);
+            var html = iconv.decode(buffer.toBuffer(), encoding);
+            fn(err, response, html);
+        }).on('data', function (data) {
+            buffer.concat(data);
+        });
+    } catch (e){
+        console.log(e.stack);
+        fn(e, null, null);
+    }
 }
 
 function download(url, referer, opts, path, fn) {
