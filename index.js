@@ -22,14 +22,16 @@ function crawl(url, method, opts, fn) {
     opts.method = method;
     opts.gzip = opts.gzip || true;
     request(opts, function (err, response, res) {
-        var encoding = 'UTF-8';
-        if (res && res.headers && res.headers['content-type']) {
-            encoding = res.headers['content-type'].split('charset=')[1] || encoding;
-        } else if (res.contains('charset=')) {
+        var encoding = null;
+        if (response && response.headers && response.headers['content-type']) {
+            encoding = response.headers['content-type'].split('charset=')[1];
+        }
+        if (!encoding && res.contains('charset=')) {
             var match = /charset=([^'"\\s]+)/gmi.exec(res);
             if(match && match[1])
                 encoding = match[1];
         }
+        encoding = encoding || 'UTF-8';
         console.log(url, ' encoding:', encoding);
         var html = iconv.decode(buffer.toBuffer(), encoding);
         fn(err, response, html);
