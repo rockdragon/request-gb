@@ -23,8 +23,13 @@ function crawl(url, method, opts, fn) {
     opts.gzip = opts.gzip || true;
     request(opts, function (err, response, res) {
         var encoding = 'UTF-8';
-        if (res && res.headers && res.headers['content-type'])
+        if (res && res.headers && res.headers['content-type']) {
             encoding = res.headers['content-type'].split('charset=')[1] || encoding;
+        } else if (res.contains('charset=')) {
+            var match = /charset=([^'"\\s]+)/gmi.exec(res);
+            if(match && match[1])
+                encoding = match[1];
+        }
         console.log(url, ' encoding:', encoding);
         var html = iconv.decode(buffer.toBuffer(), encoding);
         fn(err, response, html);
@@ -62,3 +67,9 @@ function download2Buffer(url, referer, opts, fn) {
         buffer.concat(data);
     });
 }
+
+String.prototype.contains = function (needle) {
+    if (needle === '') return true;
+    if (this == null) return false;
+    return this.indexOf(needle) !== -1;
+};
