@@ -27,9 +27,10 @@ function crawl(url, method, opts, fn) {
             encoding = response.headers['content-type'].split('charset=')[1];
         }
         if (!encoding && res.contains('charset=')) {
-            var match = /charset=([^'"\\s]+)/gmi.exec(res);
-            if(match && match[1])
+            var match = /<meta[\s\S]*?charset=([^'"\s]+)/gmi.exec(res);
+            if(match && match[1]) {
                 encoding = match[1];
+            }
         }
         encoding = encoding || 'UTF-8';
         console.log(url, ' encoding:', encoding);
